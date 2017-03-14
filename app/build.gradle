@@ -17,6 +17,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //Incluyendo las librerias de apache para envio de variables
+    useLibrary 'org.apache.http.legacy'
+
+    //Descativa el error generado por navMenuIcons.getResourceId, generado en la clase BaseActivity
+    lintOptions{
+        disable "ResourceType"
+    }
 }
 
 dependencies {
@@ -27,4 +35,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
     testCompile 'junit:junit:4.12'
+    compile 'com.mcxiaoke.volley:library:1.0.6'
+    compile 'com.google.android.gms:play-services:6.1.+'
 }
