@@ -48,7 +48,7 @@ public class StoreOpenClose extends Activity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private SessionManager session;
     private Switch sw_open, swPermitio ;
-    private Button bt_photo, bt_guardar;
+    private Button bt_photo,bt_photo2, bt_guardar;
     private EditText et_Comentario,etComent2;
     private TextView tv_Pregunta;
     private LinearLayout lyPermitio, lyOpenClose, lyAuditoria;
@@ -99,6 +99,7 @@ public class StoreOpenClose extends Activity {
         tv_Pregunta = (TextView) findViewById(R.id.tvPregunta);
         bt_guardar = (Button) findViewById(R.id.btGuardar);
         bt_photo = (Button) findViewById(R.id.btPhoto);
+        bt_photo2 = (Button) findViewById(R.id.btPhoto2);
         //et_Comentario = (EditText) findViewById(R.id.etComentario);
         etComent2 = (EditText) findViewById(R.id.etComent2);
 
@@ -120,8 +121,6 @@ public class StoreOpenClose extends Activity {
         poll_id= GlobalConstant.poll_id[0];
         poll_id2= GlobalConstant.poll_id[1];
 
-        //poll_id = 72 , solo para exhibiciones de bayer, directo de la base de datos
-
         pDialog = new ProgressDialog(myActivity);
         pDialog.setMessage(getString(R.string.text_loading));
         pDialog.setCancelable(false);
@@ -133,21 +132,12 @@ public class StoreOpenClose extends Activity {
 
         tv_Pregunta.setText("¿Se encuentra abierto el establecimiento?");
 
-//        for (int x = 0; x < radioButton1Array.length; x++) {
-//            radioButton1Array[x].setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // DO stuff here........................
-//                }
-//            });
-//
-//        }
 
         rgOpt2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(radioButton2Array[3].isChecked())
+                if(radioButton2Array[3].isChecked() || radioButton2Array[2].isChecked())
                 {
                     etComent2.setEnabled(true);
                     etComent2.setVisibility(View.VISIBLE);
@@ -217,6 +207,13 @@ public class StoreOpenClose extends Activity {
             @Override
             public void onClick(View v) {
                 takePhoto();
+            }
+        });
+
+        bt_photo2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takePhoto2();
             }
         });
 
@@ -350,6 +347,25 @@ public class StoreOpenClose extends Activity {
         bolsa.putString("product_id", String.valueOf("0"));
         bolsa.putString("publicities_id", String.valueOf("0"));
         bolsa.putString("poll_id", String.valueOf(poll_id));
+        bolsa.putString("sod_ventana_id", String.valueOf("0"));
+        bolsa.putString("company_id", String.valueOf(GlobalConstant.company_id));
+        bolsa.putString("category_product_id", "0");
+        bolsa.putString("monto","");
+        bolsa.putString("razon_social","");
+        bolsa.putString("url_insert_image", GlobalConstant.dominio + "/insertImagesProductPollAlicorp");
+        bolsa.putString("tipo", "1");
+        i.putExtras(bolsa);
+        startActivity(i);
+    }
+    private void takePhoto2() {
+
+        Intent i = new Intent( myActivity, AndroidCustomGalleryActivity.class);
+        Bundle bolsa = new Bundle();
+
+        bolsa.putString("store_id", String.valueOf(store_id));
+        bolsa.putString("product_id", String.valueOf("0"));
+        bolsa.putString("publicities_id", String.valueOf("0"));
+        bolsa.putString("poll_id", String.valueOf(poll_id2));
         bolsa.putString("sod_ventana_id", String.valueOf("0"));
         bolsa.putString("company_id", String.valueOf(GlobalConstant.company_id));
         bolsa.putString("category_product_id", "0");

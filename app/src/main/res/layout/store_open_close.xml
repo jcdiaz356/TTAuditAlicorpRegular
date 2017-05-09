@@ -203,8 +203,25 @@
                             android:scrollbars="vertical"
                             android:textSize="15sp"
                             android:id="@+id/etComent2" />
+                        <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        >
+                        <Button
+                            android:id="@+id/btPhoto2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableBottom="@drawable/ic_photo"
+                            android:layout_below="@+id/widget110"
+                            android:background="@android:color/transparent"
+                            android:layout_gravity="center" />
+
+                    </LinearLayout>
                     </RadioGroup>
+
                 </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
 

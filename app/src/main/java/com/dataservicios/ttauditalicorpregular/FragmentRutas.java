@@ -53,8 +53,8 @@ public class FragmentRutas extends Fragment {
     // Log tag
     private static final String TAG = MainActivity.class.getSimpleName();
     // Movies json url
-    private static final String URL_AUDITORIAS = "http://www.dataservicios.com/webservice/rutas.php";
-    private static final String URL_PDVS = "http://www.dataservicios.com/webservice/pdvs.php";
+//    private static final String URL_AUDITORIAS = "http://www.dataservicios.com/webservice/rutas.php";
+//    private static final String URL_PDVS = "http://www.dataservicios.com/webservice/pdvs.php";
     private List<Ruta> rutaList = new ArrayList<Ruta>();
     private ListView listView;
     private RutasAdapter adapter;
@@ -193,97 +193,97 @@ public class FragmentRutas extends Fragment {
             pDialog.dismiss();
     }
 
-    private void cargaPdvs(){
-//        pDialog = new ProgressDialog(getActivity());
-//        // Showing progress dialog before making http request
-//        pDialog.setMessage("Loading...");
-//        pDialog.show();
-        String url_pdv_nueva =  URL_PDVS + "?id=" + id_user;
-        showpDialog();
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest( url_pdv_nueva , null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d("Cargando PDV: ", response.toString());
-
-                        try {
-
-                            String Sdpvs = String.valueOf(response.getInt("pdvs"));
-                            String Sporcentajeavance = String.valueOf(response.getInt("porcentajeavance"));
-                            String Sauditados = String.valueOf(response.getInt("auditados"));
-                           // Log.d("eeeeeERRR", String.valueOf(response.getInt("pdvs")));
-                            pdvs1.setText(Sdpvs) ;
-                            pdvsAuditados1.setText(Sauditados);
-                            porcentajeAvance1.setText(Sporcentajeavance);
-//                             pdvs1.setText("80") ;
-//                             pdvsAuditados1.setText("10");
-//                             porcentajeAvance1.setText("25");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        hidepDialog();
-                    }
-                }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "EEEError: " + error.getMessage());
-                hidepDialog();
-            }
-        });
-
-        AppController.getInstance().addToRequestQueue(jsonObjReq);
-    }
-
-    private void cargaRutasPdvs(){
-//        //        // Creando objeto Json y llenado en el lista pdvs de la semana
-//        pDialog = new ProgressDialog(getActivity());
-//        // Showing progress dialog before making http request
-//        pDialog.setMessage("Loading...");
-//        pDialog.show();
-        showpDialog();
-        String url_rutas_nueva =  URL_AUDITORIAS + "?id=" + id_user;
-        JsonArrayRequest rutaReq = new JsonArrayRequest(URL_AUDITORIAS,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
-
-                        // Parsing json
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject obj = response.getJSONObject(i);
-                                Ruta ruta = new Ruta();
-                                ruta.setId(obj.getInt("id"));
-                                ruta.setRutaDia(obj.getString("ruta"));
-                                ruta.setPdvs(obj.getInt("pdvs"));
-                                ruta.setPorcentajeAvance(obj.getInt("porcentajeavance"));
-                                // adding movie to movies array
-                                rutaList.add(ruta);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        // notifying list adapter about data changes
-                        // so that it renders the list view with updated data
-                        adapter.notifyDataSetChanged();
-                        hidepDialog();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                hidepDialog();
-            }
-        }
-        );
-
-        AppController.getInstance().addToRequestQueue(rutaReq);
-
-
-    }
+//    private void cargaPdvs(){
+////        pDialog = new ProgressDialog(getActivity());
+////        // Showing progress dialog before making http request
+////        pDialog.setMessage("Loading...");
+////        pDialog.show();
+//        String url_pdv_nueva =  URL_PDVS + "?id=" + id_user;
+//        showpDialog();
+//        JsonObjectRequest jsonObjReq = new JsonObjectRequest( url_pdv_nueva , null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        Log.d("Cargando PDV: ", response.toString());
+//
+//                        try {
+//
+//                            String Sdpvs = String.valueOf(response.getInt("pdvs"));
+//                            String Sporcentajeavance = String.valueOf(response.getInt("porcentajeavance"));
+//                            String Sauditados = String.valueOf(response.getInt("auditados"));
+//                           // Log.d("eeeeeERRR", String.valueOf(response.getInt("pdvs")));
+//                            pdvs1.setText(Sdpvs) ;
+//                            pdvsAuditados1.setText(Sauditados);
+//                            porcentajeAvance1.setText(Sporcentajeavance);
+////                             pdvs1.setText("80") ;
+////                             pdvsAuditados1.setText("10");
+////                             porcentajeAvance1.setText("25");
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        hidepDialog();
+//                    }
+//                }, new Response.ErrorListener() {
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                VolleyLog.d(TAG, "EEEError: " + error.getMessage());
+//                hidepDialog();
+//            }
+//        });
+//
+//        AppController.getInstance().addToRequestQueue(jsonObjReq);
+//    }
+//
+//    private void cargaRutasPdvs(){
+////        //        // Creando objeto Json y llenado en el lista pdvs de la semana
+////        pDialog = new ProgressDialog(getActivity());
+////        // Showing progress dialog before making http request
+////        pDialog.setMessage("Loading...");
+////        pDialog.show();
+//        showpDialog();
+//        String url_rutas_nueva =  URL_AUDITORIAS + "?id=" + id_user;
+//        JsonArrayRequest rutaReq = new JsonArrayRequest(URL_AUDITORIAS,
+//                new Response.Listener<JSONArray>() {
+//                    @Override
+//                    public void onResponse(JSONArray response) {
+//                        Log.d(TAG, response.toString());
+//
+//                        // Parsing json
+//                        for (int i = 0; i < response.length(); i++) {
+//                            try {
+//                                JSONObject obj = response.getJSONObject(i);
+//                                Ruta ruta = new Ruta();
+//                                ruta.setId(obj.getInt("id"));
+//                                ruta.setRutaDia(obj.getString("ruta"));
+//                                ruta.setPdvs(obj.getInt("pdvs"));
+//                                ruta.setPorcentajeAvance(obj.getInt("porcentajeavance"));
+//                                // adding movie to movies array
+//                                rutaList.add(ruta);
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//
+//                        // notifying list adapter about data changes
+//                        // so that it renders the list view with updated data
+//                        adapter.notifyDataSetChanged();
+//                        hidepDialog();
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                VolleyLog.d(TAG, "Error: " + error.getMessage());
+//                hidepDialog();
+//            }
+//        }
+//        );
+//
+//        AppController.getInstance().addToRequestQueue(rutaReq);
+//
+//
+//    }
 
     private void cargaRutasAndPdvs(){
         // Creando objeto Json y llenado en el lista pdvs de la semana
