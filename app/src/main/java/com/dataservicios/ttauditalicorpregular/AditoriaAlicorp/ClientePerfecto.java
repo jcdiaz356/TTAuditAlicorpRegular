@@ -46,9 +46,9 @@ public class ClientePerfecto extends Activity {
 
     private Switch swSiNo ;
     private Button bt_guardar;
-    private EditText etComentario;
+    //private EditText etComentario;
     private TextView tv_Pregunta;
-    private LinearLayout lyNoClientPerfet ;
+    //private LinearLayout lyNoClientPerfet ;
 
     private String tipo,cadenaruc, fechaRuta, comentario="", type, region;
 
@@ -76,7 +76,7 @@ public class ClientePerfecto extends Activity {
 
         swSiNo = (Switch) findViewById(R.id.swSiNo);
 
-        lyNoClientPerfet = (LinearLayout) findViewById(R.id.lyNoClientPerfet);
+        //lyNoClientPerfet = (LinearLayout) findViewById(R.id.lyNoClientPerfet);
 
 
 
@@ -86,7 +86,7 @@ public class ClientePerfecto extends Activity {
         bt_guardar = (Button) findViewById(R.id.btGuardar);
 
         //etComentario = (EditText) findViewById(R.id.etComentario);
-        etComentario = (EditText) findViewById(R.id.etComentario);
+        //etComentario = (EditText) findViewById(R.id.etComentario);
 
 
 
@@ -123,14 +123,14 @@ public class ClientePerfecto extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     is_sino = 1;
-                    lyNoClientPerfet.setEnabled(false);
-                    lyNoClientPerfet.setVisibility(View.VISIBLE);
-                    etComentario.setText("");
+//                    lyNoClientPerfet.setEnabled(false);
+//                    lyNoClientPerfet.setVisibility(View.VISIBLE);
+                   // etComentario.setText("");
                 } else {
                     is_sino = 0;
-                    lyNoClientPerfet.setEnabled(true);
-                    lyNoClientPerfet.setVisibility(View.INVISIBLE);
-                    etComentario.setText("");
+//                    lyNoClientPerfet.setEnabled(true);
+//                    lyNoClientPerfet.setVisibility(View.INVISIBLE);
+                  //  etComentario.setText("");
                 }
             }
         });
@@ -154,7 +154,7 @@ public class ClientePerfecto extends Activity {
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        comentario = String.valueOf(etComentario.getText()) ;
+                       // comentario = String.valueOf(etComentario.getText()) ;
 
                         pollDetail = new PollDetail();
                         pollDetail.setPoll_id(poll_id);
@@ -218,13 +218,13 @@ public class ClientePerfecto extends Activity {
 
                 if(!AuditUtil.insertPollDetail(pollDetail)) return false;
 
-                pollDetail.setPoll_id(poll_id2);
-                pollDetail.setSino(0);
-                pollDetail.setComment(1);
-                pollDetail.setResult(0);
-                pollDetail.setLimite("0");
-                pollDetail.setComentario(comentario);
-                if(!AuditUtil.insertPollDetail(pollDetail)) return false;
+//                pollDetail.setPoll_id(poll_id2);
+//                pollDetail.setSino(0);
+//                pollDetail.setComment(1);
+//                pollDetail.setResult(0);
+//                pollDetail.setLimite("0");
+//                pollDetail.setComentario(comentario);
+//                if(!AuditUtil.insertPollDetail(pollDetail)) return false;
 
 
             } else if(is_sino==0){

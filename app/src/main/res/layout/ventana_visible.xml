@@ -114,7 +114,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:tag="a"
-                            android:text="Ventana ok" />
+                            android:text="Ventana Perfecta" />
 
                         <RadioButton
                             android:id="@+id/rbB"

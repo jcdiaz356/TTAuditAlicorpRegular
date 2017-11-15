@@ -578,7 +578,6 @@ public class AuditUtil {
         return  user;
     }
 
-
     public static boolean saveLatLongStore(Integer store_id, double latitude,double longitude ) {
 
         int success;

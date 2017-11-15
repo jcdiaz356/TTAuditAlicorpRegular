@@ -137,17 +137,26 @@ public class StoreOpenClose extends Activity {
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(radioButton2Array[3].isChecked() || radioButton2Array[2].isChecked())
+                if(radioButton2Array[3].isChecked())
                 {
                     etComent2.setEnabled(true);
                     etComent2.setVisibility(View.VISIBLE);
                     etComent2.setText("");
+                    etComent2.setHint("");
+                }
+                else if(radioButton2Array[2].isChecked())
+                {
+                    etComent2.setEnabled(true);
+                    etComent2.setVisibility(View.VISIBLE);
+                    etComent2.setText("");
+                    etComent2.setHint("¿Porque no quiere?");
                 }
                 else
                 {
                     etComent2.setEnabled(false);
                     etComent2.setVisibility(View.INVISIBLE);
                     etComent2.setText("");
+                    etComent2.setHint("");
                 }
             }
         });

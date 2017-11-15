@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -110,13 +111,23 @@ public class AndroidCustomGalleryActivity extends Activity {
                 File file = new File(albumF,imageFileName+GlobalConstant.JPEG_FILE_SUFFIX);
 
                 Uri photoPath = Uri.fromFile(file);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoPath);
+               // intent.putExtra(MediaStore.EXTRA_OUTPUT, photoPath);
 
                 mCurrentPhotoPath = getAlbumDir().getAbsolutePath();
+//
+//                // start camera activity
+//                startActivityForResult(intent, TAKE_PICTURE);
 
-                // start camera activity
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    Uri contentUri = FileProvider.getUriForFile(MyActivity, "com.dataservicios.ttauditalicorpregular.fileProvider", file);
+                    //intent.setDataAndType(contentUri, type);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, contentUri);
+                } else {
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, photoPath);
+                }
                 startActivityForResult(intent, TAKE_PICTURE);
-
             }
         });
 

@@ -273,5 +273,15 @@
         <service android:name=".Services.UpdateServices" android:label="ALicor Upload"></service>
         <service android:name=".Services.MonitoGPSServices" android:label="MonitoGPSServices"></service>
 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.dataservicios.ttauditalicorpregular.fileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
 </manifest>

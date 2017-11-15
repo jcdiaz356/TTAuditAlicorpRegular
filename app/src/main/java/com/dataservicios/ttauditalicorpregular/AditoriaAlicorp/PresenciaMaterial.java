@@ -74,8 +74,6 @@ public class PresenciaMaterial extends Activity {
 
         db = new DatabaseHelper(getApplicationContext());
 
-
-
         bt_guardar = (Button) findViewById(R.id.btGuardar);
 
 
